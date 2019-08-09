@@ -52,5 +52,28 @@ Each frame of the input video file is divided into 3 areas :
 
 ![alt text](frame.png "Tracking")
 
+To consider whether a person is going up or down, we need to figure out if it is moving up or down.
+
+To do so, we grab the y-coordinate value for all previous centroid locations for the given object. Then we compute the direction  by taking the difference between the current centroid location and the mean of all previous centroid locations.
+
+The reason we take the mean is to ensure our direction tracking is more stable. If we stored just the previous centroid location for the person we leave ourselves open to the possibility of false direction counting. Keep in mind that object detection and object tracking algorithms are not “magic” — sometimes they will predict bounding boxes that may be slightly off what you may expect; therefore, by taking the mean, we can make our people counter more accurate.
+
+To **count** a person as going up ( "Symetric" condition to count a person as going down ), some conditions should be satisfied : 
+
+- The person should not have been counted before
+
+- The person's direction should indicate that it is going up.
+
+- The person is in the **top zone**.
+
+- At least one of its previous y-coordinates should indicate that it has been in the **bottom zone** before.
 
 
+The reason why I added the last condition is because we don't want to count a person that has done a "U turn".
+
+**Examples**:
+- If a person crosses the screen from the bottom to the top, it will be counted as going up ( All conditions satisfied )
+
+- If a person comes from the top of the screen and does a "U turn" without reaching the **bottom zone** then it won't be counted as going up. ( 4 th condition not satisfied )
+
+- If a person comes from the top of the screen and does a "U turn" after reaching the **bottom zone** then it will be counted as going down after reaching the **bottom zone** and as going up after reaching the **top zone**. +1 -1 = 0 so it's as if we didn't count the person that did the "U turn".
