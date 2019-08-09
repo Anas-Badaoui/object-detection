@@ -23,12 +23,18 @@ To install the other libraries, simply use a pip install command
 We have six command line arguments which allow us to pass information to our people counter script from the terminal at runtime :
 
 --prototxt : The path to the frozen graph file.
+
 --model : The path to the pbtxt file.
+
 --input : Optional input video file path. If no path is specified, your webcam will be utilized.
+
 --output : Optional output video path. If no path is specified, a video will not be recorded.
+
 --confidence : With a default value of 0.4 , this is the minimum probability threshold which helps to filter out weak detections.
+
 --skip-frames : The number of frames to skip before running our DNN detector again on the tracked object. Remember, object detection is computationally expensive, but it does help our tracker to reassess objects in the frame. By default we skip 30  frames between detecting objects with the OpenCV DNN module and our CNN single shot detector model.
 
+Here is an example :
 
 ```
 python people_counter.py --prototxt /inference_graph_ssd_mobilenet_v2/frozen_inference_graph.pb --model /inference_graph_ssd_mobilenet_v2/graph.pbtxt --input /videos/compilation_highD_to_use.mp4 --output /output/test_output.avi --skip-frames 2
