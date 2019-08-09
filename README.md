@@ -50,6 +50,6 @@ Each frame of the input video file is divided into 3 areas :
 
 - **The medium area** : The zone between the **top** and **bottom** area.
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![alt text](/Users/anasbadaoui1/Desktop/frame.png)
 
 
