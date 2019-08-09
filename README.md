@@ -1,7 +1,10 @@
 # People detection and tracking in the OCP sites.
 
 This repository assembles the necessary code for people detection, tracking and counting. The object detection has been done with the SSD Mobilenet model from the [Tensorflow Detection Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md).
-The main code is in the file **people_counter.py**. The algorithm used combines both object detection and object tracking. This hybrid approach will allow us to significantly reduce the computational burden of the detection.
+
+The main code is in the file **people_counter.py**. The algorithm used combines both object detection and object tracking.
+This hybrid approach will allow us to significantly reduce the computational burden of the detection.
+
 The SSD Mobilenet model files are stored in the **inference_graph_ssd_mobilenet_v2/** folder. 
 The Centroid Tracking algorithm is stored in the **pyimagesearch/** folder.
 
