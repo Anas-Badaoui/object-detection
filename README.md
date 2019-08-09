@@ -48,7 +48,7 @@ Each frame of the input video file is divided into 3 areas :
 
 - **The bottom area** : The bottom zone of the frame; area = 1/8 of the total area of the frame.
 
-- **The medium area** : The zone between the **top** and **bottom** area.
+- **The medium area** : The zone between the **top** and **bottom** area. Any person that is in this areas will always be considered as **not counted** !
 
 ![alt text](frame.png "Tracking")
 
