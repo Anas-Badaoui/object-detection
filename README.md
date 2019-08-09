@@ -34,7 +34,7 @@ We have six command line arguments which allow us to pass information to our peo
 
 --skip-frames : The number of frames to skip before running our DNN detector again on the tracked object. Remember, object detection is computationally expensive, but it does help our tracker to reassess objects in the frame. By default we skip 30  frames between detecting objects with the OpenCV DNN module and our CNN single shot detector model.
 
-Here is an example :
+For example, if we are in the object-detection folder :
 
 ```
 python people_counter.py --prototxt /inference_graph_ssd_mobilenet_v2/frozen_inference_graph.pb --model /inference_graph_ssd_mobilenet_v2/graph.pbtxt --input /videos/compilation_highD_to_use.mp4 --output /output/test_output.avi --skip-frames 2
