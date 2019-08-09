@@ -60,13 +60,13 @@ The reason we take the mean is to ensure our direction tracking is more stable. 
 
 To **count** a person as going up ( "Symetric" condition to count a person as going down ), some conditions should be satisfied : 
 
-- The person should not have been counted before
+- Condition 1: The person should not have been counted before
 
-- The person's direction should indicate that it is going up.
+- Condition 2: The person's direction should indicate that it is going up.
 
-- The person is in the **top zone**.
+- Condition 3: The person is in the **top zone**.
 
-- At least one of its previous y-coordinates should indicate that it has been in the **bottom zone** before.
+- Condition 4: At least one of its previous y-coordinates should indicate that it has been in the **bottom zone** before.
 
 
 The reason why I added the last condition is because we don't want to count a person that has done a "U turn".
@@ -77,3 +77,20 @@ The reason why I added the last condition is because we don't want to count a pe
 - If a person comes from the top of the screen and does a "U turn" without reaching the **bottom zone** then it won't be counted as going up. ( 4 th condition not satisfied )
 
 - If a person comes from the top of the screen and does a "U turn" after reaching the **bottom zone** then it will be counted as going down after reaching the **bottom zone** and as going up after reaching the **top zone**. +1 -1 = 0 so it's as if we didn't count the person that did the "U turn".
+
+***Problems with these counting conditions :***
+
+- If a person came from the bottom of the frame and started moving up and down the line of the **top zone** then it will be counted as going up many times.
+
+To solve this problem, we erase all the previous values of the y-coordinates list except the last one as soon as the person is counted as going up or down.
+
+- If a person is crossing the frame from the bottom to the top ( for example ) and for some reason it's Id changes in the **medium zone**. This person won't be counted as going up ( Condition 4 won't be satisfied since the previous y-coordinates would indicate that this person mysteriously appeared in the **medium zone** )
+
+To solve this problem, we modify the 4th condition as follows :
+
+- Condition 4: At least one of its previous y-coordinates should indicate that it has been in the **bottom zone** before **OR** the first element of the y-coordinates list is a coordinate of the **medium zone** ( Translatable as : the person **randomly appeared** in the **medium zone** ).
+
+### Remaining problem in counting :
+
+If a person does a U turn in the medium zone and it's id changes for some reason then it will be counted ( Modified 4 th condition ).
+
