@@ -39,3 +39,19 @@ For example, if we are in the object-detection folder :
 ```
 python people_counter.py --prototxt /inference_graph_ssd_mobilenet_v2/frozen_inference_graph.pb --model /inference_graph_ssd_mobilenet_v2/graph.pbtxt --input /videos/compilation_highD_to_use.mp4 --output /output/test_output.avi --skip-frames 2
 ```
+
+### How does the tracking work :
+
+Each frame of the input video file is divided into 3 areas :
+
+- **The top area** : The top zone of the frame; area = 1/8 of the total area of the frame.
+
+- **The bottom area** : The bottom zone of the frame; area = 1/8 of the total area of the frame.
+
+- **The medium area** : The zone between the **top** and **bottom** area.
+
+![Alt text](/Users/anasbadaoui1/Desktop/frame.png?raw=true "Frame from the output video")
+
+
+
+
