@@ -58,7 +58,7 @@ To do so, we grab the y-coordinate value for all previous centroid locations for
 
 The reason we take the mean is to ensure our direction tracking is more stable. If we stored just the previous centroid location for the person we leave ourselves open to the possibility of false direction counting. Keep in mind that object detection and object tracking algorithms are not “magic” — sometimes they will predict bounding boxes that may be slightly off what you may expect; therefore, by taking the mean, we can make our people counter more accurate.
 
-To **count** a person as going up ( "Symetric" condition to count a person as going down ), some conditions should be satisfied : 
+To **count** a person as going up, some conditions should be satisfied : 
 
 - Condition 1: The person should not have been counted before
 
