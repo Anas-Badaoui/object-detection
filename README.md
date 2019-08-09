@@ -50,6 +50,7 @@ Each frame of the input video file is divided into 3 areas :
 
 - **The medium area** : The zone between the **top** and **bottom** area.
 
+![alt text](frame.png "Tracking")
 
 
 
